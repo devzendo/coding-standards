@@ -112,5 +112,8 @@
         <module name="JavaNCSS"/>
         <module name="NPathComplexity"/>
         <module name="BooleanExpressionComplexity"/>
+        <module name="FinalLocalVariable">
+            <property name="tokens" value="PARAMETER_DEF,VARIABLE_DEF"/>
+        </module>
     </module>
 </module>

@@ -1,0 +1,81 @@
+As per the maven-license-plugin's documentation, add this into the pom.xml
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.mycila.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <configuration>
+          <header>../CodingStandards/HEADER.txt</header>
+          <includes>
+            <include>src/**/*.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+Ensure ~/.m2/settings.xml has:
+
+
+  <profiles>
+    <profile>
+      <id>default</id>
+      <repositories>
+        <repository>
+            <id>mc-thirdparty</id>
+            <name>Local Maven repository of third party libraries not in maven
+        repository</name>
+            <url>http://mc-repository.googlecode.com/svn/maven2/thirdparty</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+            <id>mc-release</id>
+            <name>Local Maven repository of releases</name>
+            <url>http://mc-repository.googlecode.com/svn/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+            <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>mc-snapshot</id>
+            <name>Local Maven repository of snapshots</name>
+            <url>http://mc-repository.googlecode.com/svn/maven2/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>mc-thirdparty</id>
+            <name>Local Maven repository of third party libraries not in maven
+        repository</name>
+            <url>http://mc-repository.googlecode.com/svn/maven2/thirdparty</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  ... rest of file ...
+
+Then, do:
+mvn license:format -Dyear=2008-2010 "-Duser.name=Matt Gumbley, DevZendo.org" -Dweb=http://devzendo.org
+
+	
